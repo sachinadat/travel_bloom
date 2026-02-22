@@ -1,0 +1,227 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* body {
+    background: linear-gradient(135deg, #e8f6ff, #ffffff);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+} */
+body {
+    background-image: url('images/home_bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* makes the image cover the whole screen */
+    background-attachment: fixed;
+    /* keeps image fixed while scrolling */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f5f5f5;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Left side: Logo + Title */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo i {
+    font-size: 24px;
+    color: #0077b6;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+/* Center: Navigation links */
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #0077b6;
+}
+
+/* Right side: Search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    gap: 8px;
+    width: 100%;
+    /* ensure the bar takes full width */
+    max-width: 500px;
+    /* optional: limit width */
+}
+
+.search-bar input {
+    flex: 1;
+    /* input expands to fill available space */
+    min-width: 0;
+    /* prevents placeholder from being cut */
+    border: none;
+    outline: none;
+    padding: 6px;
+}
+
+.search-bar i {
+    color: #0077b6;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #0077b6;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    background: #005f87;
+}
+
+/* LEFT SOCIAL BAR */
+.social-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 70px;
+
+    /* Completely transparent */
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    box-shadow: none;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+
+    z-index: 100;
+}
+
+.social-bar a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #163a5f;
+    transition: all 0.3s ease;
+}
+
+.social-bar a:hover {
+    background: #1ea7fd;
+    transform: scale(1.1);
+}
+
+.social-bar svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+
+/* MAIN CONTENT */
+.container {
+    margin-left: 90px;
+    max-width: 900px;
+    padding: 60px 40px;
+    animation: fadeIn 1s ease;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #0a2540;
+    margin-bottom: 20px;
+}
+
+.container div {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 35px;
+}
+
+/* BUTTON */
+button {
+    padding: 14px 32px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 30px;
+    background: #1ea7fd;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(30, 167, 253, 0.3);
+}
+
+button:hover {
+    background: #0a2540;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(10, 37, 64, 0.35);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsive */
+@media(max-width: 768px) {
+    .social-bar {
+        flex-direction: row;
+        height: 60px;
+        width: 100%;
+        bottom: 0;
+        top: auto;
+    }
+
+    .container {
+        margin-left: 0;
+        padding: 40px 20px 80px;
+    }
+}
