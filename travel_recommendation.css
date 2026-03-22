@@ -6,12 +6,6 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* body {
-    background: linear-gradient(135deg, #e8f6ff, #ffffff);
-    color: #333;
-    min-height: 100vh;
-    display: flex;
-} */
 body {
     background-image: url('images/home_bg.jpg');
     background-repeat: no-repeat;
@@ -19,15 +13,33 @@ body {
     /* makes the image cover the whole screen */
     background-attachment: fixed;
     /* keeps image fixed while scrolling */
+    padding-top: 60px; /* roughly nav height */
 }
 
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background: #f5f5f5;
     padding: 10px 20px;
     font-family: Arial, sans-serif;
+    z-index: 1000;
+}
+
+/* Navigation links - always centered */
+.nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Left side: Logo + Title */
@@ -48,15 +60,7 @@ nav {
     color: #333;
 }
 
-/* Center: Navigation links */
-.nav-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
+/* Navigation links */
 .nav-links a {
     text-decoration: none;
     color: #333;
@@ -159,23 +163,151 @@ nav {
 
 /* MAIN CONTENT */
 .container {
-    margin-left: 90px;
-    max-width: 900px;
-    padding: 60px 40px;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+
+    /* allow content to fill available viewport width while keeping a
+       comfortable maximum */
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    padding: 80px 40px 60px; /* extra top padding for fixed nav */
     animation: fadeIn 1s ease;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-h1 {
-    font-size: 3rem;
+.main-content {
+    flex: 1 1 520px;
+    min-width: 280px;
+}
+
+.results-panel {
+    flex: 0 0 400px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.results-panel h2 {
+    font-size: 1.5rem;
     color: #0a2540;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #1ea7fd;
+    padding-bottom: 8px;
 }
 
-.container div {
+.no-results {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.result-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.result-item h3 {
+    font-size: 1.2rem;
+    color: #0a2540;
+    margin: 0;
+}
+
+.result-item h4 {
+    font-size: 1rem;
+    color: #0a2540;
+    margin: 0 0 5px 0;
+}
+
+.result-item p {
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.city-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 6px;
+}
+
+.city-item img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.city-item:last-child {
+    margin-bottom: 0;
+}
+
+.main-content > div {
     font-size: 1.15rem;
     line-height: 1.8;
     color: #555;
     margin-bottom: 35px;
+}
+
+.results-list {
+    display: grid;
+    gap: 16px;
+}
+
+.result-card {
+    display: flex;
+    gap: 14px;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: rgba(250, 250, 250, 0.9);
+}
+
+.result-card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.result-content h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #0a2540;
+}
+
+.result-content p {
+    margin: 0;
+    line-height: 1.4;
+    color: #444;
 }
 
 /* BUTTON */
@@ -197,6 +329,12 @@ button:hover {
     box-shadow: 0 12px 25px rgba(10, 37, 64, 0.35);
 }
 
+.visit-btn {
+    padding: 8px 16px;
+    width: fit-content;
+    font-size: 0.9rem;
+}
+
 /* Animation */
 @keyframes fadeIn {
     from {
@@ -208,6 +346,37 @@ button:hover {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* grid-style for team members */
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.member {
+    text-align: center;
+}
+
+.member img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.default-avatar {
+    color: #ccc;
+    margin-bottom: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Mobile Responsive */
@@ -223,5 +392,61 @@ button:hover {
     .container {
         margin-left: 0;
         padding: 40px 20px 80px;
+        flex-direction: column;
+        gap: 20px;
     }
+
+    .results-panel {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* CONTACT FORM */
+.contact-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 12px;
+    background: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.contact-form button:hover {
+    background: #005f87;
 }

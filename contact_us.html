@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Travel Bloom</title>
+  <title>Contact Us</title>
   <link rel="stylesheet" href="./travel_recommendation.css">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -20,15 +20,7 @@
           <li><a href="./about_us.html" id="aboutUs">About Us</a></li>
           <li><a href="./contact_us.html" id="contactUs">Contact Us</a></li>
         </ul>
-    
-        <!-- Right: Search bar with input, icon, and colored buttons -->
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Enter a destination or keyword">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <button id="btnSearch">Search</button>
-            <button id="btnClear">Clear</button>
-        </div>
-  
+
     </nav>
     
     <!-- SOCIAL MEDIA SIDEBAR -->
@@ -61,28 +53,25 @@
 
     <!-- MAIN CONTENT -->
     <div class="container">
-        <section class="main-content">
-            <h1>Welcome to Travel Bloom</h1>
-            <div>
-                Your journey begins here.<br><br>
-                At Travel Bloom, we believe every traveler deserves a destination that feels tailor-made.
-                Whether you’re chasing serene beaches, bustling cityscapes, cultural treasures, or hidden
-                gems off the beaten path, our platform helps you discover places that perfectly match your
-                preferences.<br><br>
-                Think of us as your personal travel curator—guiding you through inspiring options,
-                simplifying choices, and ensuring your next adventure is not just a trip, but an experience
-                that truly blooms.
-            </div>
-            <button id="bookNow">Book Now</button>
-        </section>
-
-        <aside class="results-panel" id="resultsPanel">
-            <h2 id="resultsTitle">Search results</h2>
-            <div class="results-list" id="resultsList">
-                <p class="no-results">Enter a keyword (e.g., "beach" / "temple" / "country") and press Search.</p>
-            </div>
-        </aside>
+        <h1>Contact Us</h1>
+        <div>
+            <p>Have questions or need help planning your next trip? We'd love to hear from you.</p>
+            <p>Email: <a href="mailto:support@travelbloom.com">support@travelbloom.com</a></p>
+            <p>Follow us on social media for the latest updates and travel inspiration!</p>
+        </div>
+        
+        <form class="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit">Submit</button>
+        </form>
     </div>
-<script src="./travel_recommendation.js"></script>
 </body>
 </html>
